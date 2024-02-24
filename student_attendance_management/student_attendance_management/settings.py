@@ -15,8 +15,6 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -41,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'student_management_app',
+    'rest_framework',
+    'corsheaders',
+
 ]
 
 
@@ -52,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'student_attendance_management.urls'
@@ -80,14 +83,14 @@ WSGI_APPLICATION = 'student_attendance_management.wsgi.application'
 
 DATABASES = {
     'default': {
-        ##'ENGINE': 'django.db.backends.sqlite3',
-       ## 'NAME': BASE_DIR / 'db.sqlite3',
-       'ENGINE':'django.db.backends.mysql',
-       'NAME':'student_attendance_management',
-       'USER':'student_attendance_management',
-       'PASSWORD':'password1234',
-       'HOST':'localhost',
-       'PORT':'3306'
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'student_attendance_management',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '3306'
     }
 }
 
@@ -123,6 +126,9 @@ USE_I18N = True
 USE_TZ = True
 
 
+
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
@@ -132,3 +138,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# frontend points 
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:5173',  # Add your Vue.js frontend URL here
+]
