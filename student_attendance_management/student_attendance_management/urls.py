@@ -24,4 +24,11 @@ urlpatterns = [
     
     path('login/',views.showDemoPage),
     path('admin/',admin.site.urls),
+    
+    path('api/login/', views.LoginAPIView.as_view(),name='api-login'),
+    
+    #below tum Aage bana sakta hai 
+    
+    #  path('api/logout/', views.LogoutAPIView.as_view(), name='api-logout'),
+    # path('api/register/', views.RegisterAPIView.as_view(), name='api-register'),
 ]
